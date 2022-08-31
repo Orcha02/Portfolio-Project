@@ -1,16 +1,32 @@
+const button = document.querySelector(".p");
+const submit = document.querySelector(".submit");
+
+function toggleClass() {
+  this.classList.toggle("active");
+}
+
+function addClass() {
+  this.classList.add("finished");
+}
+
+button.addEventListener("click", toggleClass);
+button.addEventListener("transitionend", toggleClass);
+button.addEventListener("transitionend", addClass);
+
 //DOM
 const $ = document.querySelector.bind(document);
 
 //APP
 let App = {};
-App.init = function () {
+App.init = (function () {
   //Init
   function handleFileSelect(evt) {
     const files = evt.target.files; // FileList object
 
     //files template
-    let template = `${Object.keys(files).
-    map(file => `<div class="file file--${file}">
+    let template = `${Object.keys(files)
+      .map(
+        (file) => `<div class="file file--${file}">
      <div class="name"><span>${files[file].name}</span></div>
      <div class="progress active"></div>
      <div class="done">
@@ -20,8 +36,9 @@ App.init = function () {
 		</svg>
 						</a>
      </div>
-    </div>`).
-    join("")}`;
+    </div>`
+      )
+      .join("")}`;
 
     $("#drop").classList.add("hidden");
     $("footer").classList.add("hasFiles");
@@ -30,31 +47,33 @@ App.init = function () {
       $(".list-files").innerHTML = template;
     }, 1000);
 
-    Object.keys(files).forEach(file => {
+    Object.keys(files).forEach((file) => {
       let load = 2000 + file * 2000; // fake load
       setTimeout(() => {
-        $(`.file--${file}`).querySelector(".progress").classList.remove("active");
+        $(`.file--${file}`)
+          .querySelector(".progress")
+          .classList.remove("active");
         $(`.file--${file}`).querySelector(".done").classList.add("anim");
       }, load);
     });
   }
 
   // trigger input
-  $("#triggerFile").addEventListener("click", evt => {
+  $("#triggerFile").addEventListener("click", (evt) => {
     evt.preventDefault();
     $("input[type=file]").click();
   });
 
   // drop events
-  $("#drop").ondragleave = evt => {
+  $("#drop").ondragleave = (evt) => {
     $("#drop").classList.remove("active");
     evt.preventDefault();
   };
-  $("#drop").ondragover = $("#drop").ondragenter = evt => {
+  $("#drop").ondragover = $("#drop").ondragenter = (evt) => {
     $("#drop").classList.add("active");
     evt.preventDefault();
   };
-  $("#drop").ondrop = evt => {
+  $("#drop").ondrop = (evt) => {
     $("input[type=file]").files = evt.dataTransfer.files;
     $("footer").classList.add("hasFiles");
     $("#drop").classList.remove("active");
@@ -73,4 +92,4 @@ App.init = function () {
 
   // input change
   $("input[type=file]").addEventListener("change", handleFileSelect);
-}();
+})();
