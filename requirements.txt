@@ -1,0 +1,2 @@
+pip3 install pdfplumber
+pip3 install XlsxWriter
