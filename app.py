@@ -28,7 +28,7 @@ def upload_file():
    if request.method == 'POST':
       f = request.files['file']
       f.save(secure_filename(f.filename))
-      return render_template('upload.html')
+      return render_template('extract.html')
 
 @app.route('/extract',methods=['POST', 'GET'])
 def schedule():
@@ -123,7 +123,7 @@ def schedule():
                                 flight_three, pax_three)))
                     else:
                         pass
-    return render_template('index.html')
+    return render_template('organize.html')
 
 @app.route('/organize',methods=['POST', 'GET'])
 def organize():
@@ -206,7 +206,7 @@ def organize():
                     print("")
                     for match in re.finditer(regex.inter_mia_re, line):
                         print(line.strip())
-    return render_template('index.html')
+    return render_template('download.html')
 
 @app.route('/invoices',methods=['POST', 'GET'])
 def invoices():
@@ -267,6 +267,7 @@ def invoices():
                             pass
 
                 # NAME
+                #breakpoint()
                 name_matches = re.finditer(regex.name_re, text)
                 lines = text.splitlines()
                 for matchNum, name in enumerate(name_matches, start=1):
@@ -296,7 +297,7 @@ def invoices():
                     excel.pax_row  += 1
 
             excel.workbook.close()
-    return render_template('invoices.html')
+    return render_template('download.html')
 
 @app.route('/download-messages')
 def downloadMessages ():
