@@ -17,6 +17,10 @@ body {
   color: #0f3d3e;
 }
 
+.noFile {
+  font-size: 20px !important;
+}
+
 .upload {
   position: relative;
   width: 400px;
@@ -3122,7 +3126,7 @@ input:checked + label .button_spots:nth-of-type(60) {
 }
 
 .finished {
-  background-color: #54d98c;
+  background-color: green;
 }
 .finished .submit {
   display: none;
