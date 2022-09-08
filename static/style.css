@@ -14,7 +14,7 @@ body {
 }
 
 .fa-file-text-o:before {
-  color: #0f3d3e;
+  color: white;
 }
 
 .noFile {
@@ -1704,6 +1704,7 @@ input:checked + label .button_spots:nth-of-type(60) {
   text-align: Center;
   transition: all 0.3s, box-shadow 0.2s, transform 0.2s 0.2s;
 }
+
 .button_inner span.t {
   position: relative;
   top: 6px;
@@ -1728,7 +1729,10 @@ input:checked + label .button_spots:nth-of-type(60) {
   color: #0f3d3e;
   background: #e2dcc8;
   box-shadow: 0px 17px 18px -14px rgba(0, 0, 0, 0.08);
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
 }
+
 .button_inner:hover span.t {
   left: 16px;
   transition: left 0.4s;
@@ -1961,6 +1965,35 @@ input:checked + label .button_spots:nth-of-type(60) {
 .button_inner:hover .button_spots:nth-of-type(54) {
   -webkit-animation: spot-54 0.7s 0.2666666667s linear infinite;
   animation: spot-54 0.7s 0.2666666667s linear infinite;
+}
+
+.bk-btn {
+  margin: 0.5rem;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  height: 52px;
+  width: 52px;
+  background-color: #0f3d3e;
+  border-radius: 50%;
+}
+.bk-btn .bk-btn-triangle {
+  position: relative;
+  top: 13px;
+  left: 10.4px;
+  width: 0;
+  height: 0;
+  border-top: 13px solid transparent;
+  border-bottom: 13px solid transparent;
+  border-right: 13px solid #e2dcc8;
+}
+.bk-btn .bk-btn-bar {
+  position: relative;
+  background-color: #e2dcc8;
+  height: 7.8px;
+  width: 13px;
+  top: -3.64px;
+  left: 22.88px;
 }
 
 @-webkit-keyframes spot-1 {
@@ -3126,7 +3159,7 @@ input:checked + label .button_spots:nth-of-type(60) {
 }
 
 .finished {
-  background-color: green;
+  background-color: #0f3d3e;
 }
 .finished .submit {
   display: none;

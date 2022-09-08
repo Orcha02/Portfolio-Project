@@ -44,6 +44,8 @@ tpa_courtyard_re = r"TPA to Courtyard by Marriott Tampa"
 courtyard_tpa_re = r"Courtyard by Marriott Tampa to TPA"
 ac_tpa_re = r"AC Hotel Airport to TPA"
 tpa_ac_re = r"TPA to AC Hotel Airport"
+hyattTPA_tpa = r"Hyatt Place Tampa Airport/ Westshore to TPA"
+tpa_hyattTPA = r"TP to Hyatt Place Tampa Airport/ Westshore"
 # MIA
 inter_mia_re = r"Inter to MIA"
 mia_inter_re = r"MIA to Inter"

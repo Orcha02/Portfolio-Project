@@ -22,14 +22,11 @@ def round_time(time_string):
 def home():
     return render_template("index.html")
 
-@app.route('/upload', methods = ['GET', 'POST'])
-def upload_file():
-   if request.method == 'POST':
-      f = request.files['file']
-      f.save(secure_filename(f.filename))
-      return render_template('extract.html')
+@app.route('/menu',methods=['POST', 'GET'])
+def menu():
+    return render_template("menu.html")
 
-@app.route('/extract',methods=['POST', 'GET'])
+@app.route('/messages',methods=['POST', 'GET'])
 def schedule():
     with pdfplumber.open("./FLLNKDRR.pdf") as pdf:
         with open('tmp.txt', 'w') as f:
@@ -114,10 +111,7 @@ def schedule():
                                 flight_three, pax_three)))
                     else:
                         pass
-    return render_template('organize.html')
 
-@app.route('/organize',methods=['POST', 'GET'])
-def organize():
     with open('messages.txt', 'w') as f:
         with redirect_stdout(f):
             today = datetime.now()
@@ -345,11 +339,10 @@ def organize():
                         pass
                     else:
                         print(line.strip())
-    return render_template('download.html')
+    return render_template('messages.html')
 
 @app.route('/invoices',methods=['POST', 'GET'])
 def invoices():
-    
     with pdfplumber.open("./FLLNKDRR.pdf") as pdf:
         for i in range(len(pdf.pages)):
             text = pdf.pages[i].extract_text()
