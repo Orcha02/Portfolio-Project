@@ -40,12 +40,12 @@ def schedule():
                     # TIME
                     time_matches = re.finditer(r.time_re, text)
                     for matchNum, time in enumerate(time_matches, start=1):
-                        if matchNum is 1:
+                        if matchNum == 1:
                             time_one = round_time(time.group())
-                        elif matchNum is 2:
+                        elif matchNum == 2:
                             time_two = round_time(time.group())
                         try:
-                            if matchNum is 3:
+                            if matchNum == 3:
                                 time_three = round_time(time.group())
                         except StopIteration:
                             pass
@@ -53,12 +53,12 @@ def schedule():
                     # PICK UP
                     pick_matches = re.finditer(r.pick_re, text)
                     for matchNum, pick_up in enumerate(pick_matches, start=1):
-                        if matchNum is 1:
+                        if matchNum == 1:
                             pick_one = pick_up.group(1)[19:]
-                        elif matchNum is 2:
+                        elif matchNum == 2:
                             pick_two = pick_up.group(1)[19:]
                         try:
-                            if matchNum is 3:
+                            if matchNum == 3:
                                 pick_three = pick_up.group(1)[19:]
                         except StopIteration:
                             pass
@@ -66,12 +66,12 @@ def schedule():
                     # DROP OFF
                     drop_matches = re.finditer(r.drop_re, text)
                     for matchNum, drop_off in enumerate(drop_matches, start=1):
-                        if matchNum is 1:
+                        if matchNum == 1:
                             drop_one = drop_off.group(1)
-                        elif matchNum is 2:
+                        elif matchNum == 2:
                             drop_two = drop_off.group(1)
                         try:
-                            if matchNum is 3:
+                            if matchNum == 3:
                                 drop_three = drop_off.group(1)
                         except StopIteration:
                             pass
@@ -79,12 +79,12 @@ def schedule():
                     # FLIGHT
                     flight_matches = re.finditer(r.flight_re, text)
                     for matchNum, flight in enumerate(flight_matches, start=1):
-                        if matchNum is 1:
+                        if matchNum == 1:
                             flight_one = flight.group(1)
-                        elif matchNum is 2:
+                        elif matchNum == 2:
                             flight_two = flight.group(1)
                         try:
-                            if matchNum is 3:
+                            if matchNum == 3:
                                 flight_three = flight.group(1)
                         except StopIteration:
                             pass
@@ -92,12 +92,12 @@ def schedule():
                     # PAX
                     pax_matches = re.finditer(r.pax_re, text)
                     for matchNum, pax in enumerate(pax_matches, start=1):
-                        if matchNum is 1:
+                        if matchNum == 1:
                             pax_one = pax.group(1)
-                        elif matchNum is 2:
+                        elif matchNum == 2:
                             pax_two = pax.group(1)
                         try:
-                            if matchNum is 3:
+                            if matchNum == 3:
                                 pax_three = pax.group(1)
                         except StopIteration:
                             pass
@@ -108,7 +108,7 @@ def schedule():
                     print(("{} {} to {} Flt {} Pax {}".format(
                             time_two, pick_two, drop_two,
                             flight_two, pax_two)))
-                    if matchNum is 3:
+                    if matchNum == 3:
                         print(("{} {} to {} Flt {} Pax {}".format(
                                 time_three, pick_three, drop_three,
                                 flight_three, pax_three)))
@@ -406,19 +406,19 @@ def invoices():
             for name in name_matches:
                 if name.group(2):
                     matchNum += 1
-                    if matchNum is 1:
+                    if matchNum == 1:
                         one = name.group(2).lower().title()
                         excel.worksheet.write(excel.name_row, excel.name_col,
                                                                         one, excel.cell_format)
                         excel.name_row += 1
-                    elif matchNum is 2:
+                    elif matchNum == 2:
                         two = name.group(2).lower().title()
                         excel.name_row -= 1
                         excel.worksheet.write(excel.name_row, excel.name_col,
                                               "{}\n{}".format(one, two),
                                               excel.cell_format)
                         excel.name_row += 1
-                    elif matchNum is 3:
+                    elif matchNum == 3:
                         three = name.group(2).lower().title()
                         excel.name_row -= 1
                         excel.worksheet.write(excel.name_row, excel.name_col,
@@ -426,7 +426,7 @@ def invoices():
                                               (one, two, three),
                                               excel.cell_format)
                         excel.name_row += 1
-                    elif matchNum is 4:
+                    elif matchNum == 4:
                         four = name.group(2).lower().title()
                         excel.name_row -= 1
                         excel.worksheet.write(excel.name_row, excel.name_col,
@@ -443,19 +443,19 @@ def invoices():
             for crew in crew_matches:
                 if crew.group(1):
                     matchNum += 1
-                    if matchNum is 1:
+                    if matchNum == 1:
                         one = crew.group(1)
                         excel.worksheet.write(excel.crew_row, excel.crew_col,
                                               one, excel.cell_format)
                         excel.crew_row += 1
-                    elif matchNum is 2:
+                    elif matchNum == 2:
                         two = crew.group(1)
                         excel.crew_row -= 1
                         excel.worksheet.write(excel.crew_row, excel.crew_col,
                                               "{}\n{}".format(one, two),
                                               excel.cell_format)
                         excel.crew_row += 1
-                    elif matchNum is 3:
+                    elif matchNum == 3:
                         three = crew.group(1)
                         excel.crew_row -= 1
                         excel.worksheet.write(excel.crew_row, excel.crew_col,
@@ -463,7 +463,7 @@ def invoices():
                                               (one, two, three),
                                               excel.cell_format)
                         excel.crew_row += 1
-                    elif matchNum is 4:
+                    elif matchNum == 4:
                         four = crew.group(1)
                         excel.crew_row -= 1
                         excel.worksheet.write(excel.crew_row, excel.crew_col,
@@ -499,19 +499,19 @@ def invoices():
             for status in status_matches:
                 if status.group(4):
                     matchNum += 1
-                    if matchNum is 1: 
+                    if matchNum == 1: 
                         one = status.group(4)   
                         excel.worksheet.write(excel.status_row, excel.status_col,
                                             status.group(4), excel.cell_format)
                         excel.status_row += 1
-                    elif matchNum is 2:
+                    elif matchNum == 2:
                         two = status.group(4)
                         excel.status_row -= 1
                         excel.worksheet.write(excel.status_row, excel.status_col,
                                               "{}\n{}".format(one, two),
                                               excel.cell_format)
                         excel.status_row += 1
-                    elif matchNum is 3:
+                    elif matchNum == 3:
                         three = status.group(4)
                         excel.status_row -= 1 
                         excel.worksheet.write(excel.status_row, excel.status_col,
@@ -519,7 +519,7 @@ def invoices():
                                               (one, two, three),
                                               excel.cell_format)
                         excel.status_row += 1
-                    elif matchNum is 4:
+                    elif matchNum == 4:
                         four = status.group(4)
                         excel.status_row -= 1
                         excel.worksheet.write(excel.status_row, excel.status_col,
