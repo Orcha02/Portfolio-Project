@@ -24,6 +24,9 @@ def home():
 
 @app.route('/menu',methods=['POST', 'GET'])
 def menu():
+    if request.method == 'POST':
+      f = request.files['file']
+      f.save(secure_filename(f.filename))
     return render_template("menu.html")
 
 @app.route('/messages',methods=['POST', 'GET'])
